@@ -2,9 +2,10 @@
   "name": "api",
   "version": "1.0.0",
   "description": "Serve your texts",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "devStart": "nodemon server.js"
   },
   "keywords": [
     "rap"
@@ -16,5 +17,8 @@
     "express-graphql": "^0.9.0",
     "graphql": "^14.4.2",
     "mongoose": "^5.6.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
