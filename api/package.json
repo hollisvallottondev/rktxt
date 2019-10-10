@@ -8,7 +8,9 @@
     "devStart": "nodemon server.js"
   },
   "keywords": [
-    "rap"
+    "rap",
+    "notes",
+    "tag"
   ],
   "author": "Hollis",
   "license": "ISC",
