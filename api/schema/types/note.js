@@ -32,12 +32,6 @@ const NoteType = new GraphQLObjectType({
                     const latest = noteversions[ noteversions.length - 1 ]; 
                     return latest; 
                 })
-                // NoteVersion.find( { noteId }, "", function( err, data) {
-                //     const noteversions = data; 
-                //     const latest = noteversions[ noteversions.length - 1 ]; 
-                //     console.log('latest', latest); 
-                //     res.send(latest); 
-                // } );
             }
         },
         noteversions: {
