@@ -7,14 +7,9 @@ const { GraphQLID, GraphQLList } = graphql;
 const author = {
     type: AuthorType,
     args: { id: { type: GraphQLID } },
-    resolve: ( parent, args ) => {
+    resolve: async ( parent, args ) => {
         const { id } = args; 
-        return Author.find({ id }); 
-    },
-    notes: ( parent, args ) => {
-        const { id } = args;
-        console.log('looking for notes', id);
-        return Notes.find( {authorId: id }); 
+        return Author.findOne({ _id:id }); 
     }
 } 
 

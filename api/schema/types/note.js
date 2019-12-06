@@ -6,7 +6,6 @@ const {
     GraphQLObjectType, 
     GraphQLID, 
     GraphQLList, 
-    GraphQLNonNull
 } = graphql;
 
 const NoteType = new GraphQLObjectType({
@@ -23,10 +22,8 @@ const NoteType = new GraphQLObjectType({
         },
         latest: {
             type: NoteVersionType, 
-            resolve: ( parent, args ) => {
-                console.log('parent', parent)
+            resolve: async ( parent, args ) => {
                 const noteId = parent.id; 
-                console.log('noteId', noteId); 
                 return NoteVersion.find( { noteId } ).then( res => {
                     const noteversions = res; 
                     const latest = noteversions[ noteversions.length - 1 ]; 

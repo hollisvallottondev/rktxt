@@ -14,9 +14,7 @@ const addAuthor = {
         name: { type: GraphQLString },
     },
     resolve: (parent, args) => {
-        console.log('args', args); 
         const author = new Author( args ); 
-        console.log('author', author); 
         author.save(); 
         return author; 
     }
@@ -29,10 +27,11 @@ const updateAuthor = {
         id: { type: GraphQLNonNull(GraphQLID) },
         name: { type: GraphQLString },
     },
-    resolve: (parent, args) => {
+    resolve: async (parent, args) => {
         const { id } = args; 
-        const author = Author.update( { _id: id }, { args }); 
-        return author;
+        return Author.update( { _id: id }, { ...args }).then( res => {
+            return Author.findOne( { _id: id } ).then( author => author); 
+        }); 
     }
 }
 

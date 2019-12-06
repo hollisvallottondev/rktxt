@@ -37,7 +37,11 @@ const updateNote = {
     },
     resolve: (parent, args) => {
         const { noteId, text } = args; 
-        return ""; 
+        const noteversion = new NoteVersion({ text, noteId }); 
+        noteversion.save(); 
+        return Note.findOne({ _id: noteId }).then( res => {
+            return res;
+        }); 
     }
 }
 

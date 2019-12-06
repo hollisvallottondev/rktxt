@@ -1,9 +1,11 @@
 const express = require('express');
 const expressGraphQl = require('express-graphql');
+const cors = require('cors');
 
 const schema = require('./schema/schema')
 
-const app = express();
+const app = express().use("*",cors());
+
 
 const mongoose = require('mongoose');
 
@@ -27,6 +29,6 @@ app.use('/graphql', expressGraphQl({
     graphiql: true
 }));
 
-app.listen(3000, () => {
-    console.log('Listening on port 3000');
+app.listen(3001, () => {
+    console.log('Listening on port 3001');
 }); 

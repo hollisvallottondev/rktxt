@@ -16,8 +16,8 @@ const AuthorType = new GraphQLObjectType({
         name: { type: GraphQLString },
         notes:{
             type: new GraphQLList( NoteType ),
-            resolve(parent,args){
-                const { id } = parent; 
+            resolve: (parent,args) => {
+                const { id } = parent;
                 return Note.find( { authorId: id } ); 
             }
         }
